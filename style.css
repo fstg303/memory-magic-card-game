@@ -1,116 +1,218 @@
- @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: blue;
+  color: white;
+  flex-flow: column;
+}
+
+*[class^="iconoir-"]::before,
+*[class*=" iconoir-"]::before {
+  width: 3em;
+  height: 3em;
+}
+
+.title{
+   text-align: center;
+}
+
+.wrapper {
+  height: 400px;
+  width: 400px;
+  background-color: lightgray;
+  border-radius: 10px 10px 0px 0px;
+  padding: 25px 25px 0 25px;
+}
+
+.cards,
+.card,
+.view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards {
+  width: 100%;
+  height: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.cards .card {
+  cursor: pointer;
+  width: calc(100% / 4 - 10px);
+  height: calc(100% / 4 - 10px);
+  position: relative;
+  perspective: 800px;
+  transform-style: preserve-3d;
+}
+
+.card.shake {
+  animation: shake 0.35s ease-in-out;
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-13px);
+  }
+  40% {
+    transform: translateX(13px);
+  }
+  60% {
+    transform: translateX(-8px);
+  }
+  80% {
+    transform: translateX(8px);
+  }
+}
+
+.cards .card .view {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  user-select: none;
+  pointer-events: none;
+  background-color: white;
+  border-radius: 7px;
+  color: black;
+  box-shadow: 0 3px 10px rgb(0, 0, 0, 0.1);
+  /* transition: transform .25s linear; */
+  backface-visibility: hidden;
+  transition: transform 0.8s;
+}
+
+.card .front-view,
+.card .back-view {
+  /* max-width: 45px; */
+}
+
+.card .front-view i:before {
+  color: blue;
+}
+
+.card .back-view {
+  transform: rotateY(-180deg);
+}
+
+.card .front-view {
+  transform: rotateY(0);
+}
+
+.card.flip .back-view {
+  transform: rotateY(0);
+}
+
+.card.flip .front-view {
+  transform: rotateY(-180deg);
+}
+
+.wrapper-counter {
+  height: 75px;
+  width: 400px;
+  background-color: lightgray;
+  border-radius: 0px 0px 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 25px 25px 25px 25px;
+}
+
+.counter, .alert {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  width: 100%;
+
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+}
+
+.counter span{
+   font-weight: bold;
+}
+
+.timer, .flipCards, .refresh{
+   font-size: larger;
+}
+
+.btn-refresh{
+
+}
+
+
+.btn-refresh 
+{
+padding: 2px 4px;
+border-radius: 6px;
+font-weight: 300;
+font-size: 16px;
+text-transform: capitalize;
+color: #c70039;
+border: solid 1px #c70039;
+/* background-color: #c70039; */
+width: 110px;
+height: 30px;
+transition: width 0.5s, margin-top 0.5s;
+}
+
+.btn-refresh:hover
+{
+   color: #fff;
+background-color: #c70039;
+cursor: pointer;
+}
+  
+.alert-wrapper{
+   height: 75px;
+   width: 400px;
+   background-color: lightgray;
+   border-radius: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
  
- *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
- }
+   padding: 25px 25px 25px 25px;
+}
 
- body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background: blue;
-    color: white
- }
+.alert-wrapper .alert{
+   display: flex;
+   justify-content: center;
 
- *[class^='iconoir-']::before, *[class*=' iconoir-']::before {
-    width: 3em;
-    height: 3em;
- }
+}
 
- .wrapper{
-    height: 400px;
-    width: 400px;
-    background-color: lightgray;
-    border-radius:  10px;
-    padding: 25px;
+.hidden{
+   display: none;
+   opacity: 0;
+   /* transition: opacity 0.5s ease-in-out; */
+   animation: fadeIn 3s ease-in-out;
+}
+.show{
+   display: flex;
+   opacity: 1;
+}
 
- }
-
- .cards, .card, .view {
-    display: flex;
-    align-items: center;
-    justify-content: center;
- }
-
-
- .cards {
-    width: 100%;
-    height: 100%;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
- }
-
- .cards .card{
-    cursor: pointer;
-    width: calc(100% / 4 - 10px);
-    height: calc(100% / 4 - 10px);
-    position: relative;
-    perspective: 800px;
-    transform-style: preserve-3d;
- }
-
- .card.shake{
-   animation: shake .35s ease-in-out;
- }
- @keyframes shake {
-   0%, 100% {
-      transform: translateX(0);
+@keyframes fadeIn {
+   from {
+       opacity: 0;
    }
-   20% {
-      transform: translateX(-13px);
+   to {
+       opacity: 1;
    }
-   40% {
-      transform: translateX(13px);
-   }
-   60% {
-      transform: translateX(-8px);
-   }
-   80% {
-      transform: translateX(8px);
-   }
- }
-
-
- .cards .card .view{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    user-select: none;
-    pointer-events: none;
-    background-color: white; 
-    border-radius: 7px;  
-    color: black;
-    box-shadow: 0 3px 10px rgb(0,0,0, 0.1);
-    /* transition: transform .25s linear; */
-    backface-visibility: hidden;
-    transition: transform 0.8s;
- }
-
- .card .front-view, .card .back-view{
-    /* max-width: 45px; */
- }
-
- .card .front-view i:before{
-    color:blueviolet
- }
-
- .card .back-view{
-    transform: rotateY(-180deg)
- }
-
-.card .front-view{
-    transform: rotateY(0)
- }
-
- .card.flip .back-view{
-    transform: rotateY(0)
- }
-
-.card.flip .front-view{
-    transform: rotateY(-180deg)
- }
+}
