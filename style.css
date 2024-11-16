@@ -17,6 +17,10 @@ body {
   flex-flow: column;
 }
 
+a{
+  color: white;
+}
+
 *[class^="iconoir-"]::before,
 *[class*=" iconoir-"]::before {
   width: 3em;
