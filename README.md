@@ -11,3 +11,5 @@
 - **Game Reset:** Option to restart the game and reset the score.
 - **Easy Customization:** Simple to modify and integrate.
 - **Clean Code:** Well-organized and commented for easy understanding.
+
+![Screenshot](https://github.com/fstg303/memory-magic-card-game/blob/main/Memory-Magic-Card-Game-Screenshot.png)
